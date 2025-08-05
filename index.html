@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minha Lista de Tarefas Avançada</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome para ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Favicon - um ícone de lista de tarefas simples -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='%23007bff' d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z'/></svg>" type="image/svg+xml">
+</head>
+<body>
+    <div class="container">
+        <div class="header-section">
+            <h1>Minha Lista de Tarefas</h1>
+            <button id="dark-mode-toggle" title="Alternar Modo Escuro">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+
+        <form id="todo-form">
+            <input type="text" id="todo-input" placeholder="Adicionar nova tarefa..." required>
+            <input type="time" id="todo-time" value="09:00">
+            <select id="todo-importance">
+                <option value="baixa">Baixa</option>
+                <option value="media" selected>Média</option>
+                <option value="alta">Alta</option>
+            </select>
+            <button type="submit">Adicionar</button>
+        </form>
+
+        <div class="filters">
+            <button class="filter-btn active" data-filter="all">Todas</button>
+            <button class="filter-btn" data-filter="active">Ativas</button>
+            <button class="filter-btn" data-filter="completed">Concluídas</button>
+        </div>
+
+        <div class="sort-options">
+            <button class="sort-btn active" data-sort="default">Ordem Padrão</button>
+            <button class="sort-btn" data-sort="time">Horário</button>
+            <button class="sort-btn" data-sort="importance">Importância</button>
+        </div>
+
+        <button id="clear-completed-btn" class="action-btn">
+            <i class="fas fa-eraser"></i> Limpar Concluídas
+        </button>
+
+        <div class="task-summary">
+            <span id="active-tasks-count"></span> | <span id="completed-tasks-count"></span>
+        </div>
+
+        <p id="empty-list-message" class="hidden">Nenhuma tarefa aqui ainda! Adicione uma nova.</p>
+
+        <ul id="todo-list">
+            <!-- As tarefas serão adicionadas aqui via JavaScript -->
+        </ul>
+    </div>
+
+    <!-- NOVO: Modal de Confirmação -->
+    <div id="confirmation-modal" class="modal hidden">
+        <div class="modal-content">
+            <p id="modal-message">Tem certeza que deseja excluir esta tarefa?</p>
+            <div class="modal-buttons">
+                <button id="modal-confirm-btn" class="confirm-btn">Confirmar</button>
+                <button id="modal-cancel-btn" class="cancel-btn">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- NOVO: Contêiner para Toast Notifications -->
+    <div id="toast-container"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,854 @@
+/* Variáveis CSS para temas */
+:root {
+    --bg-color: #eef2f6; /* Fundo mais claro e suave */
+    --container-bg: #ffffff;
+    --text-color: #34495e; /* Texto mais escuro e distinto */
+    --input-border: #dfe6ee; /* Borda sutil para inputs */
+    --input-focus-shadow: rgba(0, 123, 255, 0.4); /* Sombra de foco mais acentuada */
+    
+    --button-primary-bg: linear-gradient(135deg, #007bff 0%, #0056b3 100%); /* Gradiente para o botão principal */
+    --button-primary-hover-bg: linear-gradient(135deg, #0056b3 0%, #003f7f 100%);
+    --button-active-shadow: 0 4px 8px rgba(0, 123, 255, 0.3); /* Sombra para botões ativos */
+
+    --list-item-bg: #ffffff;
+    --list-item-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Sombra mais pronunciada para itens da lista */
+    --completed-bg: #e6ffe6; /* Fundo mais suave para concluídas */
+    --completed-text: #6c757d;
+    --filter-btn-bg: #f8f9fa;
+    --filter-btn-text: #495057;
+    --filter-btn-border: #ced4da;
+    --filter-btn-hover-bg: #e9ecef;
+    --filter-btn-hover-border: #adb5bd;
+
+    --detail-icon-color: #7f8c8d; /* Cor mais suave para ícones de detalhe */
+    --line-separator-color: #e0e0e0;
+    --edit-input-border: #b0c4de; /* Borda para inputs de edição */
+    --edit-input-focus-shadow: rgba(0, 123, 255, 0.3);
+
+    --importance-low-color: #28a745;
+    --importance-medium-color: #ffc107;
+    --importance-high-color: #dc3545;
+
+    --error-color: #dc3545; /* Cor para erros */
+    --error-shadow: rgba(220, 53, 69, 0.25);
+
+    --toast-success-bg: #d4edda;
+    --toast-success-text: #155724;
+    --toast-error-bg: #f8d7da;
+    --toast-error-text: #721c24;
+    --modal-overlay-bg: rgba(0, 0, 0, 0.5);
+    --modal-content-bg: #ffffff;
+    --modal-text-color: #34495e;
+    --modal-confirm-bg: #28a745;
+    --modal-confirm-hover-bg: #218838;
+    --modal-cancel-bg: #6c757d;
+    --modal-cancel-hover-bg: #5a6268;
+}
+
+/* Modo Escuro */
+body.dark-mode {
+    --bg-color: #2c3e50; /* Fundo mais escuro */
+    --container-bg: #34495e; /* Contêiner mais escuro */
+    --text-color: #ecf0f1; /* Texto claro */
+    --input-border: #4a627d;
+    --input-focus-shadow: rgba(97, 175, 239, 0.4);
+
+    --button-primary-bg: linear-gradient(135deg, #61afef 0%, #5294d1 100%); /* Gradiente para o botão principal no dark mode */
+    --button-primary-hover-bg: linear-gradient(135deg, #5294d1 0%, #447aa7 100%);
+    --button-active-shadow: 0 4px 8px rgba(97, 175, 239, 0.3);
+
+    --list-item-bg: #3a506b; /* Item de lista mais escuro */
+    --list-item-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    --completed-bg: #4c627d; /* Concluídas no dark mode */
+    --completed-text: #a0a0a0;
+    --filter-btn-bg: #4a627d;
+    --filter-btn-text: #ecf0f1;
+    --filter-btn-border: #6c809a;
+    --filter-btn-hover-bg: #5f7895;
+    --filter-btn-hover-border: #7f95b0;
+
+    --detail-icon-color: #bdc3c7;
+    --line-separator-color: #4a627d;
+    --edit-input-border: #6c809a;
+    --edit-input-focus-shadow: rgba(97, 175, 239, 0.3);
+
+    --toast-success-bg: #1e3a24;
+    --toast-success-text: #8bc34a;
+    --toast-error-bg: #4a272b;
+    --toast-error-text: #e07070;
+    --modal-overlay-bg: rgba(0, 0, 0, 0.7);
+    --modal-content-bg: #34495e;
+    --modal-text-color: #ecf0f1;
+    --modal-confirm-bg: #28a745;
+    --modal-confirm-hover-bg: #218838;
+    --modal-cancel-bg: #6c757d;
+    --modal-cancel-hover-bg: #5a6268;
+}
+
+
+/* Estilos Globais e do Corpo */
+body {
+    font-family: 'Inter', sans-serif; /* Usando Inter para um visual mais moderno */
+    background-color: var(--bg-color);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Alinha ao topo com padding */
+    min-height: 100vh;
+    margin: 0;
+    padding-top: 50px; /* Espaçamento do topo */
+    transition: background-color 0.4s ease-in-out; /* Transição mais suave e expressiva */
+    color: var(--text-color);
+}
+
+.container {
+    background-color: var(--container-bg);
+    padding: 30px;
+    border-radius: 15px; /* Mais arredondado */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15); /* Sombra mais difusa e profunda */
+    width: 100%;
+    max-width: 580px; /* Um pouco mais largo */
+    text-align: center;
+    transition: background-color 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
+    position: relative; /* Para posicionar elementos internos se necessário */
+    overflow: hidden; /* Garante que elementos arredondados não vazem */
+}
+
+/* Seção do Cabeçalho (Título e Botão de Modo Escuro) */
+.header-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    padding-bottom: 10px; /* Espaço para separação */
+    border-bottom: 1px solid var(--line-separator-color); /* Linha divisória sutil */
+}
+
+h1 {
+    color: var(--text-color);
+    margin: 0;
+    font-size: 2.2rem; /* Título maior */
+    font-weight: 700; /* Mais negrito */
+    transition: color 0.4s ease-in-out;
+}
+
+#dark-mode-toggle {
+    background: none;
+    border: none;
+    font-size: 1.8rem; /* Ícone maior */
+    cursor: pointer;
+    color: var(--text-color);
+    transition: color 0.3s ease, transform 0.2s ease, background-color 0.2s ease;
+    padding: 8px;
+    border-radius: 50%;
+    outline: none; /* Remove outline no foco */
+}
+
+#dark-mode-toggle:hover {
+    transform: rotate(20deg) scale(1.1); /* Rotação e leve aumento no hover */
+    background-color: rgba(0, 0, 0, 0.05); /* Pequeno brilho */
+}
+
+body.dark-mode #dark-mode-toggle:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+
+/* Formulário de Adição de Tarefas */
+#todo-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 30px; /* Mais espaço */
+    justify-content: center;
+    align-items: center; /* Alinha verticalmente os itens do formulário */
+}
+
+#todo-input,
+#todo-time,
+#todo-importance {
+    flex-grow: 1;
+    padding: 14px 18px; /* Mais padding */
+    border: 1px solid var(--input-border);
+    border-radius: 8px; /* Mais arredondado */
+    font-size: 1.05rem;
+    outline: none;
+    min-width: 120px;
+    background-color: var(--container-bg); /* Garante que o input mude de cor com o tema */
+    color: var(--text-color); /* Cor do texto no input */
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.06); /* Sombra interna sutil */
+    transition: border-color 0.3s ease, background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#todo-input:focus,
+#todo-time:focus,
+#todo-importance:focus {
+    border-color: var(--button-primary-bg); /* Cor da borda com base no tema do botão */
+    box-shadow: 0 0 0 4px var(--input-focus-shadow); /* Sombra de foco mais visível */
+}
+
+/* Estilo para input com erro */
+#todo-input.error {
+    border-color: var(--error-color);
+    box-shadow: 0 0 0 4px var(--error-shadow);
+}
+
+#todo-form button {
+    background: var(--button-primary-bg); /* Usando gradiente */
+    color: white;
+    border: none;
+    padding: 14px 25px; /* Mais padding */
+    border-radius: 8px; /* Mais arredondado */
+    cursor: pointer;
+    font-size: 1.05rem;
+    font-weight: 600;
+    box-shadow: 0 4px 10px rgba(0, 123, 255, 0.2); /* Sombra para o botão */
+    transition: background 0.3s ease-in-out, transform 0.2s ease, box-shadow 0.3s ease;
+    display: flex; /* Para centralizar o texto se tiver ícone */
+    align-items: center;
+    justify-content: center;
+}
+
+#todo-form button:hover {
+    background: var(--button-primary-hover-bg);
+    transform: translateY(-3px); /* Efeito de "subir" mais pronunciado */
+    box-shadow: 0 6px 15px rgba(0, 123, 255, 0.3); /* Sombra mais forte no hover */
+}
+
+#todo-form button:active {
+    transform: translateY(0); /* Efeito de "clique" */
+    box-shadow: 0 2px 5px rgba(0, 123, 255, 0.2);
+}
+
+
+/* Botões de Filtro */
+.filters {
+    margin-bottom: 25px;
+    display: flex;
+    justify-content: center;
+    gap: 12px; /* Mais espaço entre os botões de filtro */
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    background-color: var(--filter-btn-bg);
+    color: var(--filter-btn-text);
+    border: 1px solid var(--filter-btn-border);
+    padding: 10px 18px; /* Mais padding */
+    border-radius: 25px; /* Botões pílula */
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); /* Sombra sutil */
+}
+
+.filter-btn:hover {
+    background-color: var(--filter-btn-hover-bg);
+    border-color: var(--filter-btn-hover-border);
+    transform: translateY(-1px); /* Pequeno efeito de subir */
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+.filter-btn.active {
+    background: var(--button-primary-bg); /* Usa o mesmo gradiente do botão principal */
+    color: white;
+    border-color: var(--button-primary-bg);
+    box-shadow: var(--button-active-shadow); /* Sombra para o botão ativo */
+    transform: translateY(-2px); /* Mantém um pouco elevado */
+}
+
+.filter-btn.active:hover {
+    background: var(--button-primary-hover-bg);
+    box-shadow: var(--button-active-shadow); /* Sombra consistente */
+}
+
+/* Estilos para os botões de Ordenação */
+.sort-options {
+    margin-bottom: 25px; /* Espaço abaixo dos botões de ordenação */
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.sort-btn {
+    background-color: var(--filter-btn-bg);
+    color: var(--filter-btn-text);
+    border: 1px solid var(--filter-btn-border);
+    padding: 10px 18px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.sort-btn:hover {
+    background-color: var(--filter-btn-hover-bg);
+    border-color: var(--filter-btn-hover-border);
+    transform: translateY(-1px);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+.sort-btn.active {
+    background: var(--button-primary-bg);
+    color: white;
+    border-color: var(--button-primary-bg);
+    box-shadow: var(--button-active-shadow);
+    transform: translateY(-2px);
+}
+
+.sort-btn.active:hover {
+    background: var(--button-primary-hover-bg);
+    box-shadow: var(--button-active-shadow);
+}
+
+/* Estilos para o botão Limpar Concluídas */
+#clear-completed-btn {
+    background: linear-gradient(135deg, #dc3545 0%, #a71d2a 100%); /* Gradiente vermelho */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px; /* Pílula */
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 20px; /* Espaço antes do sumário */
+    box-shadow: 0 4px 10px rgba(220, 53, 69, 0.25);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px; /* Espaço entre ícone e texto */
+    margin-left: auto; /* Alinhar à direita */
+    margin-right: auto; /* Centralizar se não houver espaço suficiente */
+}
+
+#clear-completed-btn:hover {
+    background: linear-gradient(135deg, #a71d2a 0%, #7e1620 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(220, 53, 69, 0.35);
+}
+
+#clear-completed-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 5px rgba(220, 53, 69, 0.2);
+}
+
+/* Estilos de modo escuro para o botão Limpar Concluídas */
+body.dark-mode #clear-completed-btn {
+    background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+    box-shadow: 0 4px 10px rgba(231, 76, 60, 0.25);
+}
+
+body.dark-mode #clear-completed-btn:hover {
+    background: linear-gradient(135deg, #c0392b 0%, #a52a22 100%);
+    box-shadow: 0 6px 15px rgba(231, 76, 60, 0.35);
+}
+
+
+/* Estilos para a Contagem de Tarefas */
+.task-summary {
+    font-size: 0.95rem;
+    color: var(--text-color);
+    margin-bottom: 20px;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.task-summary span {
+    padding: 5px 10px;
+    border-radius: 5px;
+    background-color: rgba(0, 123, 255, 0.08); /* Fundo sutil */
+    color: var(--button-primary-bg); /* Cor do texto do botão principal */
+    font-weight: 600;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.dark-mode .task-summary span {
+    background-color: rgba(97, 175, 239, 0.15);
+    color: var(--button-primary-bg);
+}
+
+
+/* Estilos para a Mensagem de Lista Vazia */
+#empty-list-message {
+    font-size: 1.1rem;
+    color: var(--text-color);
+    margin-top: 30px;
+    margin-bottom: 30px;
+    font-style: italic;
+    transition: color 0.3s ease;
+}
+
+#empty-list-message.hidden {
+    display: none;
+}
+
+
+/* Lista de Tarefas */
+#todo-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#todo-list li {
+    background-color: var(--list-item-bg);
+    padding: 18px 20px; /* Mais padding interno */
+    margin-bottom: 12px; /* Mais espaço entre os itens */
+    border-radius: 12px; /* Mais arredondado */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    box-shadow: var(--list-item-shadow);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease, color 0.3s ease;
+    position: relative;
+    overflow: hidden; /* Para garantir que o arredondamento seja visível */
+}
+
+#todo-list li:hover {
+    transform: translateY(-5px); /* Efeito de "subir" mais visível */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12); /* Sombra mais intensa no hover */
+}
+
+#todo-list li.completed {
+    background-color: var(--completed-bg);
+    text-decoration: line-through;
+    color: var(--completed-text);
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05); /* Sombra interna para concluídas */
+}
+
+/* NOVO: Animação do checkmark ao concluir */
+#todo-list li.completed .complete-btn i {
+    animation: bounceIn 0.5s ease-out forwards;
+}
+
+@keyframes bounceIn {
+    0% { transform: scale(0.1); opacity: 0; }
+    60% { transform: scale(1.2); opacity: 1; }
+    100% { transform: scale(1); }
+}
+
+
+#todo-list li .task-main-content {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 10px; /* Espaço para as informações adicionais */
+}
+
+#todo-list li span.task-text {
+    flex-grow: 1;
+    text-align: left;
+    margin-right: 15px;
+    font-weight: 600; /* Texto da tarefa mais negrito */
+    font-size: 1.2rem; /* Tamanho do texto maior */
+    cursor: pointer;
+    line-height: 1.4; /* Melhora a legibilidade */
+}
+
+/* Estilo para os inputs de edição */
+.edit-input {
+    flex-grow: 1;
+    padding: 8px 12px;
+    border: 1px solid var(--edit-input-border);
+    border-radius: 5px;
+    font-size: 1.2rem; /* Mantém o tamanho do texto original */
+    outline: none;
+    box-sizing: border-box;
+    margin-right: 15px;
+    width: auto;
+    background-color: var(--container-bg);
+    color: var(--text-color);
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.06);
+    transition: border-color 0.3s ease, background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.edit-input:focus {
+    border-color: var(--button-primary-bg);
+    box-shadow: 0 0 0 4px var(--edit-input-focus-shadow);
+}
+
+/* Estilos para o input de tempo e select de importância quando em modo edição */
+.edit-time-input, .edit-importance-select {
+    padding: 6px 10px; /* Ajuste de padding */
+    border: 1px solid var(--edit-input-border);
+    border-radius: 5px;
+    font-size: 1em; /* Tamanho do texto igual aos detalhes */
+    outline: none;
+    background-color: var(--container-bg);
+    color: var(--text-color);
+    box-sizing: border-box;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.06);
+    transition: border-color 0.3s ease, background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.edit-time-input:focus, .edit-importance-select:focus {
+    border-color: var(--button-primary-bg);
+    box-shadow: 0 0 0 3px var(--edit-input-focus-shadow);
+}
+
+
+/* Detalhes da Tarefa (Horário e Importância) */
+#todo-list li .task-details {
+    display: flex;
+    gap: 20px; /* Mais espaço entre os detalhes */
+    font-size: 0.95em; /* Tamanho um pouco maior */
+    color: var(--text-color);
+    width: 100%;
+    justify-content: flex-end; /* Alinha à direita */
+    padding-top: 8px; /* Mais espaço acima da linha */
+    border-top: 1px dashed var(--line-separator-color);
+    transition: color 0.3s ease, border-top-color 0.3s ease;
+}
+
+#todo-list li .task-details span {
+    cursor: pointer;
+    transition: color 0.2s ease, transform 0.2s ease; /* Transição para hover */
+}
+
+#todo-list li .task-details span:hover {
+    color: var(--button-primary-bg);
+    transform: scale(1.03); /* Leve aumento no hover */
+}
+
+#todo-list li .task-details i {
+    margin-right: 6px; /* Mais espaço para o ícone */
+    color: var(--detail-icon-color);
+    transition: color 0.3s ease;
+}
+
+/* Cores para Importância */
+#todo-list li.importance-baixa .task-details span.importance {
+    color: var(--importance-low-color);
+    font-weight: 600;
+}
+#todo-list li.importance-media .task-details span.importance {
+    color: var(--importance-medium-color);
+    font-weight: 600;
+}
+#todo-list li.importance-alta .task-details span.importance {
+    color: var(--importance-high-color);
+    font-weight: 600;
+}
+
+
+/* Botões de Ação (Concluir e Deletar) */
+#todo-list li .actions {
+    display: flex;
+    gap: 8px; /* Espaço entre os botões de ação */
+    position: absolute;
+    top: 15px; /* Mais afastado do topo */
+    right: 20px; /* Mais afastado da direita */
+    z-index: 10; /* Garante que os botões fiquem acima de outros elementos */
+}
+
+#todo-list li .actions button {
+    background: none;
+    border: none;
+    font-size: 1.3rem; /* Ícones maiores */
+    cursor: pointer;
+    padding: 8px; /* Mais padding nos botões */
+    border-radius: 50%; /* Botões redondos */
+    transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+    outline: none;
+    display: flex; /* Para centralizar o ícone */
+    align-items: center;
+    justify-content: center;
+}
+
+#todo-list li .actions .complete-btn {
+    color: var(--importance-low-color); /* Verde para concluir */
+}
+
+#todo-list li .actions .complete-btn:hover {
+    background-color: rgba(40, 167, 69, 0.15); /* Hover mais visível */
+    transform: scale(1.1); /* Efeito de "pop" */
+}
+
+#todo-list li.completed .actions .complete-btn {
+    color: var(--completed-text); /* Cor para tarefa concluída */
+}
+
+#todo-list li .actions .delete-btn {
+    color: var(--importance-high-color); /* Vermelho para deletar */
+}
+
+#todo-list li .actions .delete-btn:hover {
+    background-color: rgba(220, 53, 69, 0.15); /* Hover mais visível */
+    transform: scale(1.1); /* Efeito de "pop" */
+}
+
+/* Animações de entrada e saída de tarefas */
+@keyframes slideInFromRight {
+    from {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideOutToLeft {
+    from {
+        opacity: 1;
+        transform: translateX(0);
+        padding: 18px 20px; /* Mantém padding durante a animação */
+        margin-bottom: 12px;
+    }
+    to {
+        opacity: 0;
+        transform: translateX(-100%);
+        height: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+        margin-top: 0;
+        margin-bottom: 0;
+        border: none; /* Remove a borda para não deixar rastro */
+    }
+}
+
+/* Classes para aplicar as animações */
+.task-entering {
+    animation: slideInFromRight 0.4s ease-out forwards;
+}
+
+.task-leaving {
+    animation: slideOutToLeft 0.4s ease-in forwards;
+    pointer-events: none; /* Desabilita interações durante a remoção */
+}
+
+
+/* NOVO: Estilos do Modal de Confirmação */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--modal-overlay-bg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Acima de tudo */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.modal.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background-color: var(--modal-content-bg);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+    transform: translateY(-50px); /* Começa um pouco acima */
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.modal.visible .modal-content {
+    transform: translateY(0); /* Desliza para a posição */
+    opacity: 1;
+}
+
+#modal-message {
+    font-size: 1.1rem;
+    margin-bottom: 25px;
+    color: var(--modal-text-color);
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.modal-buttons button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.modal-buttons .confirm-btn {
+    background-color: var(--modal-confirm-bg);
+    color: white;
+}
+.modal-buttons .confirm-btn:hover {
+    background-color: var(--modal-confirm-hover-bg);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2);
+}
+
+.modal-buttons .cancel-btn {
+    background-color: var(--modal-cancel-bg);
+    color: white;
+}
+.modal-buttons .cancel-btn:hover {
+    background-color: var(--modal-cancel-hover-bg);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+
+/* NOVO: Estilos para Toast Notifications */
+#toast-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 2000; /* Acima do modal */
+    display: flex;
+    flex-direction: column-reverse; /* Novas toasts aparecem no topo */
+    gap: 10px;
+}
+
+.toast {
+    background-color: var(--toast-success-bg);
+    color: var(--toast-success-text);
+    padding: 12px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transform: translateY(100%);
+    animation: fadeInSlideUp 0.5s ease-out forwards, fadeOut 0.5s ease-in forwards 2.5s; /* Fade In, Slide Up, depois Fade Out */
+    min-width: 250px;
+    max-width: 350px;
+    text-align: center;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.toast.error {
+    background-color: var(--toast-error-bg);
+    color: var(--toast-error-text);
+}
+
+.toast i {
+    font-size: 1.2rem;
+}
+
+@keyframes fadeInSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-20px); /* Sutil movimento para cima ao sumir */
+    }
+}
+
+
+/* Responsividade */
+@media (max-width: 650px) { /* Ajustei o breakpoint para 650px */
+    .container {
+        margin: 20px;
+        padding: 25px;
+    }
+    .header-section {
+        flex-direction: column;
+        align-items: center;
+    }
+    h1 {
+        font-size: 1.8rem;
+        margin-bottom: 15px;
+    }
+    #dark-mode-toggle {
+        font-size: 1.3rem;
+    }
+    #todo-form {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    #todo-input, #todo-time, #todo-importance, #todo-form button {
+        width: 100%;
+        min-width: unset;
+        border-radius: 8px; /* Mantém o arredondamento */
+    }
+    .filters, .sort-options { /* Aplica os mesmos estilos para filtros e ordenação */
+        gap: 8px; /* Reduz espaço entre filtros em telas menores */
+    }
+    .filter-btn, .sort-btn { /* Aplica os mesmos estilos para botões de filtro e ordenação */
+        padding: 8px 12px;
+        font-size: 0.85rem;
+    }
+    #clear-completed-btn { /* Ajuste para o botão Limpar Concluídas em mobile */
+        width: 100%;
+        padding: 10px 15px;
+        font-size: 0.9rem;
+    }
+    #todo-list li {
+        padding: 15px;
+        border-radius: 10px;
+        padding-top: 60px; /* Aumenta padding para acomodar botões absolutos */
+    }
+    #todo-list li .task-main-content {
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%; /* Garante que o conteúdo principal ocupe a largura */
+    }
+    #todo-list li span.task-text {
+        font-size: 1rem;
+        margin-bottom: 8px;
+    }
+    #todo-list li .task-details {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+        width: 100%; /* Garante que os detalhes ocupem a largura */
+        padding-top: 10px; /* Mais espaço acima da linha */
+    }
+    #todo-list li .actions {
+        top: 10px;
+        right: 10px;
+        gap: 5px; /* Menos espaço entre os botões de ação */
+    }
+    #todo-list li .actions button {
+        font-size: 1.1rem;
+        padding: 6px;
+    }
+
+    .task-summary {
+        font-size: 0.85rem;
+    }
+
+    #toast-container {
+        right: 10px;
+        bottom: 10px;
+        left: 10px; /* Ocupa a largura total em mobile */
+        max-width: unset;
+    }
+
+    .modal-content {
+        width: 85%;
+        padding: 20px;
+    }
+}
