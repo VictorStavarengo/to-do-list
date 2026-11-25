@@ -74,6 +74,10 @@ npx serve .
 
 O site é publicado pelo GitHub Pages a partir da branch `main` em [victorstavarengo.github.io/to-do-list](https://victorstavarengo.github.io/to-do-list/). Qualquer push na `main` atualiza a demo.
 
+## Licença
+
+Distribuído sob a licença MIT. Veja o arquivo [LICENSE](LICENSE).
+
 ## Autor
 
 João Victor Stavarengo — [victorstavarengo.vercel.app](https://victorstavarengo.vercel.app) · [github.com/VictorStavarengo](https://github.com/VictorStavarengo)
